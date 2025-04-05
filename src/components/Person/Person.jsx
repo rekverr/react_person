@@ -20,23 +20,21 @@ export const alex = {
   isMarried: false,
 };
 
-export const Person = ({ person }) => {
-  let sex = '';
+export const Person = ({
+  person: { name, age, sex, isMarried, partnerName },
+}) => {
+  let partnerType = 'husband';
 
-  if (person.sex === 'm') {
-    sex = 'wife';
-  } else {
-    sex = 'husband';
+  if (sex === 'm') {
+    partnerType = 'wife';
   }
 
   return (
     <section className="Person">
-      <h2 className="Person__name">My name is {person.name}</h2>
-      {person.age && <p className="Person__age">I am {person.age}</p>}
+      <h2 className="Person__name">My name is {name}</h2>
+      {age && <p className="Person__age">I am {age}</p>}
       <p className="Person__partner">
-        {person.isMarried
-          ? `${person.partnerName} is my ${sex}`
-          : 'I am not married'}
+        {isMarried ? `${partnerName} is my ${partnerType}` : 'I am not married'}
       </p>
     </section>
   );
